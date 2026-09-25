@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fctCare - Home</title>
+	<link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpeg" href="logo.jpeg">
+    <style>
+        .banner {
+            background: linear-gradient(135deg, rgba(14, 116, 144, 0.45) 0%, rgba(13, 148, 136, 0.35) 100%), url('images/banner.jpg') center/cover no-repeat;
+            color:#ffffff;
+            padding: 80px 32px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 48px;
+            box-shadow: 0 4px 6px -1px rgba(0,0, 0, 0.05),0 2px 4px -1px rgba(0, 0,0,0.03); 
+              
+        }
+        .banner h1 {
+            font-size: 45px;
+            margin-bottom: 16px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); 
+        }
+        .banner p {
+            font-size: 19px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4); 
+        }
+        .title {
+            text-align: center;
+            color: #0a2d63;
+            margin-bottom: 32px;
+            font-size: 32px;
+        }
+        .title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: #00a896;
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+        .images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin: 32px 0 64px 0;
+        }
+        .item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0,0, 0, 0.05),0 2px 4px -1px rgba(0, 0,0,0.03);
+            height: 200px;
+        }
+        .item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        .item:hover img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .banner h1 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="brand">
+            <img src="logo.jpeg" alt="fctCare Logo" class="logo">
+            fct<span>Care</span>
+        </a>
+        <div><span></span><span></span><span></span></div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="doctors.html">Doctors</a></li>
+            <li><a href="hospitals.html">Hospitals</a></li>
+            <li><a href="appointment.html">Appointment</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div id="greeting" style="background: #ffffff; padding: 16px 24px; 
+				border-radius:8px;
+				box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); 
+				margin-bottom: 32px; 
+				display: flex; 
+				justify-content: space-between; 
+				align-items: center; 
+				flex-wrap: wrap; 
+				gap: 10px; 
+				border-left: 4px #00a896;">
+				
+			<h3 id="welcome" style="color: #0a2d63; font-weight: 600; margin: 0;"> Loading greetings...</h3>
+			
+            <div id="time" style="color:#1e293b; font-weight: 500"; font-variant-numeric: tabular-nums; background: #f1f5f9; padding: 6px 16px; border-radius: 20px; font-size: 0.95rem;">Loading current time...</div>
+        </div>
+
+        <header class="banner">
+            <h1>Your Health, Our Commitment</h1>
+            <p>Experience Sri Lanka's leading e-channeling framework. Connect instantly with top medical experts and schedule care sessions right from the comfort of your home.</p>
+            <div>
+                <a href="appointment.html" class="btn">Book Appointment Now</a>
+                <a href="doctors.html" class="btn btn_2" style="color: white; border-color: white; margin-left: 10px;">Find Specialized Doctors</a>
+            </div>
+        </header>
+
+        <section>
+            <h2 class="title">Inside Our Healthcare Network</h2>
+            <div class="images">
+                <div class="item"><img src="images/consulation.webp" alt="Consultation Room"></div>
+                <div class="item"><img src="images/doctor_consulation.jpg" alt="Doctor consultation"></div>
+                <div class="item"><img src="images/Hospital_Reception.jpg" alt="Hospital Reception"></div>
+            </div>
+        </section>
+
+        <section style="margin-top: 48px;">
+            <h2 class="title">Our Core Healthcare Services</h2>
+            <div class="grids">
+                <div class="card">
+                    <h3 style="color: #0a2d63; margin-bottom: 8px;">Expert E-Channeling</h3>
+                    <p>Gain priority routing access to renowned consultants and medical professors across various clinics effortlessly.</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: #0a2d63; margin-bottom: 8px;">Hospital Integration</h3>
+                    <p>Choose from a curated network of leading medical centers and private hospitals tailored to your regional needs.</p>
+                </div>
+                <div class="card">
+                    <h3 style="color: #0a2d63; margin-bottom: 8px;">24/7 Digital Care Desk</h3>
+                    <p>Easily access real-time appointment tracking, cancellation notifications, and immediate care schedule queries.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="images">
+                <div class="item"><img src="images/experts.jpg" alt="Expert E-Channeling"></div>
+                <div class="item"><img src="images/hospitals_intergration.jpg" alt="Hospital Intergration"></div>
+                <div class="item"><img src="images/24hour.jpg" alt="24/7 Digital Care Desk"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 fctCare. Book. Channel. Care.</p>
+        <p class="footer_text">FCT • KELANIYA</p>
+    </footer>
+
+    <script>
+        function updateTime() {
+            const hour = new Date().getHours();
+
+            if (hour < 12) {
+                document.getElementById("welcome").textContent =
+                    "Good Morning! Welcome to fctCare Portal.";
+            } else if (hour < 13) {
+                document.getElementById("welcome").textContent =
+                    "Good Afternoon! Welcome to fctCare Portal.";
+            } else if(hour < 19) {
+                document.getElementById("welcome").textContent =
+                    "Good Evening! Welcome to fctCare Portal.";
+            }
+            else {
+                document.getElementById("welcome").textContent =
+                    "Good Night! Welcome to fctCare Portal.";
+            }
+
+            document.getElementById("time").innerHTML =
+                "Current Time: <strong>" +
+                new Date().toLocaleTimeString() +
+                "</strong>";
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+    
+    <script src="script.js"></script>
+</body>
+</html>

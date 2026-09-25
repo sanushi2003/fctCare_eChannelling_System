@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fctCare - Contact Us</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpeg" href="logo.jpeg">
+    <style>
+        body{
+            background-image:url("images/c2.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.45); 
+            padding: 30px;
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+            margin-top: 64px;
+            margin-bottom: 64px;
+        }
+
+        .contact {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact_info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .info h4 {
+            margin: 0 0 5px 0;
+            color: #333;
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 300px; 
+            border: 0;
+            border-radius: 8px;
+        }
+
+        @media (min-width: 768px) {
+            .contact {
+                flex-direction: row;
+            }
+            .contact_form, .contact_us {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="brand">
+            <img src="logo.jpeg" alt="fctCare Logo" class="logo">
+		fct<span>Care</span>
+        </a>
+        <div><span></span><span></span><span></span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="doctors.html">Doctors</a></li>
+            <li><a href="hospitals.html">Hospitals</a></li>
+            <li><a href="appointment.html">Appointment</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="container" style="max-width: 1000px; width: 90%;">
+        <h2>Connect With Our Office</h2>
+        <p style="margin-bottom: 32px;">Have inquiries regarding booking systems or medical options? Drop a message.</p>
+        
+        <div class="contact">
+            
+            <div class="contact_form">
+                <form id="contactForm" action="#" method="POST">
+                    <div class="form">
+                        <label for="cname">Your Name</label>
+                        <input type="text" id="cname" class="form_field" required>
+                    </div>
+
+                    <div class="form">
+                        <label for="cEmail">Your Email Address</label>
+                        <input type="email" id="cEmail" class="form_field" required>
+                    </div>
+
+                    <div class="form">
+                        <label for="msg">Message / Inquiry</label>
+                        <textarea id="msg" class="form_field" rows="5" placeholder="Type details here..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn_2" style="width: 100%; margin-top: 16px;">Send Inquiry Message</button>
+                </form>
+            </div>
+
+            <div class="contact_us">
+                <div class="contact_info">
+                    <div class="info">
+                        <h4>Phone Number</h4>
+                        <p><a href="tel:+94112345678" style="color: inherit; text-decoration: none;">+94 11 234 5678</a></p>
+                    </div>
+
+                    <div class="info">
+                        <h4>Email Address</h4>
+                        <p><a href="mailto:info@fctcare.com" style="color: inherit; text-decoration: none;">info@fctcare.com</a></p>
+                    </div>
+
+                    <div class="info map">
+                        <h4>Our Location</h4>
+                        <iframe src ="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.331478743802!2d79.90258547475752!3d6.970164593030487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2599250f53c1d%3A0x646e6fe43eca56f3!2sFaculty%20of%20Computing%20and%20Technology%20-%20University%20of%20Kelaniya!5e0!3m2!1sen!2slk!4v1781416679292!5m2!1sen!2slk" style="border:0;"></iframe>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 fctCare. Book. Channel. Care.</p>
+        <p class="footer_text">FCT • KELANIYA</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        
+
+
+            
+
+
+            // =========================================
+// CONTACT FORM
+// =========================================
+
+const contactForm =
+    document.getElementById("contactForm");
+
+if (contactForm) {
+
+    contactForm.addEventListener(
+        "submit",
+        async function (e) {
+
+            e.preventDefault();
+
+
+            // ===============================
+            // GET VALUES
+            // ===============================
+
+            const name =
+                document
+                    .getElementById("cname")
+                    .value
+                    .trim();
+
+            const email =
+                document
+                    .getElementById("cEmail")
+                    .value
+                    .trim();
+
+            const message =
+                document
+                    .getElementById("msg")
+                    .value
+                    .trim();
+
+
+            // ===============================
+            // VALIDATION
+            // ===============================
+
+            if (name === "") {
+
+                alert("Please enter your name.");
+                return;
+            }
+
+
+            if (
+                !/^[A-Za-z\s.]+$/.test(name)
+            ) {
+
+                alert("Please enter a valid name.");
+                return;
+            }
+
+
+            if (
+                !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+            ) {
+
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+
+            if (message === "") {
+
+                alert("Please enter your message.");
+                return;
+            }
+
+
+            // ===============================
+            // CREATE FORM DATA
+            // ===============================
+
+            const formData =
+                new FormData();
+
+            formData.append(
+                "name",
+                name
+            );
+
+            formData.append(
+                "email",
+                email
+            );
+
+            formData.append(
+                "message",
+                message
+            );
+
+
+            // ===============================
+            // SEND TO PHP
+            // ===============================
+
+            try {
+
+                const response =
+                    await fetch(
+                        "backend/contact.php",
+                        {
+                            method: "POST",
+                            body: formData
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                console.log(
+                    "Contact result:",
+                    result
+                );
+
+
+                // ===============================
+                // SUCCESS
+                // ===============================
+
+                if (result.success) {
+
+                    alert(
+                        result.message
+                    );
+
+                    contactForm.reset();
+
+                }
+
+                // ===============================
+                // ERROR
+                // ===============================
+
+                else {
+
+                    alert(
+                        result.message ||
+                        "Unable to send message."
+                    );
+                }
+
+            }
+            catch (error) {
+
+                console.error(
+                    "Contact form error:",
+                    error
+                );
+
+                alert(
+                    "Unable to connect to the server."
+                );
+            }
+
+        }
+    );
+}
+
+
+    </script>
+</body>
+</html>

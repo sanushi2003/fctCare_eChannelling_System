@@ -1,0 +1,1720 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>fctCare - Book Appointment</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpeg" href="logo.jpeg">
+
+    
+<style>
+
+    .form {
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    /* Labels - Black */
+    .form label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #000000;
+    }
+
+    /* Input / Select / Textarea */
+    .form_control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #00a896;
+        border-radius: 5px;
+        color: #000000;
+        box-sizing: border-box;
+        font-size: 14px;
+        height: 42px;
+        background: #ffffff;
+    }
+
+    .form textarea.form_control {
+        height: auto;
+    }
+
+    /* Dropdown text */
+    .form_control option {
+        color: #000000;
+        background: #ffffff;
+    }
+
+    /* Dropdown selected value */
+    select.form_control {
+        color: #000000;
+        background-color: #ffffff;
+    }
+
+    /* Phone Number */
+    .phone_num {
+        display: flex;
+        width: 100%;
+        border: 1px solid #00a896;
+        border-radius: 5px;
+        overflow: hidden;
+        height: 42px;
+        box-sizing: border-box;
+        background: #ffffff;
+    }
+
+    .country_code {
+        padding: 0 15px;
+        background: #f5f5f5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-right: 1px solid #00a896;
+        color: #000000;
+        font-size: 14px;
+        white-space: nowrap;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    .phone_control {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        outline: none;
+        color: #000000;
+        font-size: 14px;
+        background: transparent;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    .phone_num:focus-within {
+        border-color: #00a896;
+        box-shadow: 0 0 0 3px rgba(0, 168, 150, 0.1);
+    }
+
+    .form_control:focus {
+        outline: none;
+        border-color: #00a896;
+        box-shadow: 0 0 0 3px rgba(0, 168, 150, 0.1);
+    }
+
+    /* Button */
+    .btn {
+        width: 100%;
+        margin-top: 16px;
+        padding: 12px;
+        background: #00a896;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    /* Total Payment */
+    .total-pay-box {
+        background-color: #f0fdfa;
+        font-weight: 700;
+        color: #000000;
+        border: 2px solid #0d9488;
+    }
+
+</style>
+
+
+</head>
+
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav class="navbar">
+
+        <a href="index.html" class="brand">
+
+            <img
+                src="logo.jpeg"
+                alt="fctCare Logo"
+                class="logo"
+            >
+
+            fct<span>Care</span>
+
+        </a>
+
+        <div>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">Home</a>
+            </li>
+
+            <li>
+                <a href="about.html">About</a>
+            </li>
+
+            <li>
+                <a href="doctors.html">Doctors</a>
+            </li>
+
+            <li>
+                <a href="hospitals.html">Hospitals</a>
+            </li>
+
+            <li>
+                <a href="appointment.html" class="active">
+                    Appointment
+                </a>
+            </li>
+
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         APPOINTMENT FORM
+    ========================== -->
+
+    <main
+        class="container"
+        style="max-width: 600px; margin: 0 auto; padding: 20px;"
+    >
+
+        <h2>
+            Schedule an E-Channeling Session
+        </h2>
+
+        <p style="margin-bottom: 32px;">
+            Fill in the validation fields to confirm your consultation schedule.
+        </p>
+
+
+        <form
+            id="appointmentForm"
+            action="#"
+            method="POST"
+        >
+
+
+            <!-- PATIENT NAME -->
+
+            <div class="form">
+
+                <label for="patientName">
+                    Patient Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="patientName"
+                    class="form_control"
+                    placeholder="John Doe"
+                    required
+                >
+
+            </div>
+
+
+            <!-- NIC -->
+
+            <div class="form">
+
+                <label for="patientNIC">
+                    NIC Number
+                </label>
+
+                <input
+                    type="text"
+                    id="patientNIC"
+                    class="form_control"
+                    placeholder="*************"
+                    required
+                >
+
+            </div>
+
+
+            <!-- PHONE -->
+
+            <div class="form">
+
+                <label for="patientPhone">
+                    Mobile Number
+                </label>
+
+                <div class="phone_num">
+
+                    <span class="country_code">
+                        +94
+                    </span>
+
+                    <input
+                        type="tel"
+                        id="patientPhone"
+                        class="phone_control"
+                        placeholder="123456789"
+                        maxlength="9"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="form">
+
+                <label for="patientEmail">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="patientEmail"
+                    class="form_control"
+                    placeholder="name@example.com"
+                    required
+                >
+
+            </div>
+
+
+            <!-- DOCTOR -->
+
+            <div class="form">
+
+                <label for="selectDoctor">
+                    Select Specialist
+                </label>
+
+                <select
+                    id="selectDoctor"
+                    class="form_control"
+                    required
+                >
+
+                    <option value="">
+                        -- Choose a Doctor --
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- HOSPITAL -->
+
+            <div class="form">
+
+                <label for="selectHospital">
+                    Select Hospital
+                </label>
+
+                <select
+                    id="selectHospital"
+                    class="form_control"
+                    required
+                    disabled
+                >
+
+                    <option value="">
+                        -- Choose a Doctor First --
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- DATE -->
+
+            <div class="form">
+
+                <label for="appointmentDate">
+                    Preferred Date
+                </label>
+
+                <input
+                    type="date"
+                    id="appointmentDate"
+                    class="form_control"
+                    required
+                    disabled
+                >
+
+            </div>
+
+
+            <!-- TIME SLOT -->
+
+            <div class="form">
+
+                <label for="selectTimeSlot">
+                    Available Time Slot
+                </label>
+
+                <select
+                    id="selectTimeSlot"
+                    class="form_control"
+                    required
+                    disabled
+                >
+
+                    <option value="">
+                        -- Choose a Date First --
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- TOTAL PAYMENT -->
+
+            <div class="form">
+
+                <label for="totalPayment">
+                    Total Pay (Rs.)
+                </label>
+
+                <input
+                    type="text"
+                    id="totalPayment"
+                    class="form_control total-pay-box"
+                    value="0.00"
+                    readonly
+                >
+
+            </div>
+
+
+            <!-- REASON -->
+
+            <div class="form">
+
+                <label>
+                    Reason for Visit
+                </label>
+
+                <textarea
+                    id="reason"
+                    class="form_control"
+                    rows="4"
+                    placeholder="Briefly describe your medical request..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
+            <button
+                type="submit"
+                class="btn"
+            >
+                Confirm Booking Request
+            </button>
+
+        </form>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <p>
+            &copy; 2026 fctCare. Book. Channel. Care.
+        </p>
+
+        <p class="footer_text">
+            FCT • KELANIYA
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+
+            // =========================================
+            // GET ELEMENTS
+            // =========================================
+
+            const appointmentDate =
+                document.getElementById("appointmentDate");
+
+            const doctorSelect =
+                document.getElementById("selectDoctor");
+
+            const hospitalSelect =
+                document.getElementById("selectHospital");
+
+            const slotSelect =
+                document.getElementById("selectTimeSlot");
+
+            const totalPaymentInput =
+                document.getElementById("totalPayment");
+
+            const form =
+                document.getElementById("appointmentForm");
+
+
+            // =========================================
+            // CHECK REQUIRED ELEMENTS
+            // =========================================
+
+            if (
+                !appointmentDate ||
+                !doctorSelect ||
+                !hospitalSelect ||
+                !slotSelect ||
+                !totalPaymentInput ||
+                !form
+            ) {
+
+                console.error(
+                    "Appointment form elements are missing."
+                );
+
+                return;
+            }
+
+
+            // =========================================
+            // VARIABLES
+            // =========================================
+
+            let doctorFee = 0;
+            let hospitalFee = 0;
+
+
+            // =========================================
+            // SET MINIMUM DATE
+            // =========================================
+
+            const today =
+                new Date();
+
+            const localToday =
+                new Date(
+                    today.getTime() -
+                    today.getTimezoneOffset() * 60000
+                )
+                .toISOString()
+                .split("T")[0];
+
+            appointmentDate.min =
+                localToday;
+
+
+            // =========================================
+            // CALCULATE TOTAL PAYMENT
+            // =========================================
+
+            function calculateTotalPay() {
+
+                const total =
+                    doctorFee + hospitalFee;
+
+                totalPaymentInput.value =
+                    total.toLocaleString("en-US", {
+
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+
+                    });
+
+            }
+
+
+            // =========================================
+            // RESET HOSPITALS
+            // =========================================
+
+            function resetHospitals() {
+
+                hospitalSelect.innerHTML =
+                    '<option value="">-- Choose a Doctor First --</option>';
+
+                hospitalSelect.disabled =
+                    true;
+
+            }
+
+
+            // =========================================
+            // RESET DATE
+            // =========================================
+
+            function resetDate() {
+
+                appointmentDate.value = "";
+
+                appointmentDate.disabled =
+                    true;
+
+            }
+
+
+            // =========================================
+            // RESET TIME SLOTS
+            // =========================================
+
+            function resetTimeSlots() {
+
+                slotSelect.innerHTML =
+                    '<option value="">-- Choose a Date First --</option>';
+
+                slotSelect.disabled =
+                    true;
+
+            }
+
+
+            // =========================================
+            // GET DAY NAME FROM DATE
+            // =========================================
+
+            function getDayOfWeek(dateValue) {
+
+                const date =
+                    new Date(
+                        dateValue + "T00:00:00"
+                    );
+
+                const days = [
+
+                    "Sunday",
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday"
+
+                ];
+
+                return days[
+                    date.getDay()
+                ];
+
+            }
+
+
+            // =========================================
+            // FORMAT TIME
+            // =========================================
+
+            function formatTime(time) {
+
+                if (!time) {
+                    return "-";
+                }
+
+                const parts =
+                    time.split(":");
+
+                if (parts.length < 2) {
+                    return time;
+                }
+
+                let hour =
+                    parseInt(
+                        parts[0],
+                        10
+                    );
+
+                const minute =
+                    parts[1];
+
+                const period =
+                    hour >= 12
+                        ? "PM"
+                        : "AM";
+
+
+                if (hour === 0) {
+
+                    hour = 12;
+
+                }
+
+                else if (hour > 12) {
+
+                    hour -= 12;
+
+                }
+
+
+                return `${hour}:${minute} ${period}`;
+
+            }
+
+
+            // =========================================
+            // LOAD DOCTORS
+            // =========================================
+
+            async function loadDoctors() {
+
+                try {
+
+                    const response =
+                        await fetch(
+                            "backend/doctors.php"
+                        );
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "HTTP Error: " +
+                            response.status
+                        );
+
+                    }
+
+
+                    const result =
+                        await response.json();
+
+
+                    console.log(
+                        "Doctors:",
+                        result
+                    );
+
+
+                    if (!result.success) {
+
+                        doctorSelect.innerHTML =
+                            '<option value="">-- Unable to Load Doctors --</option>';
+
+                        console.error(
+                            result.message
+                        );
+
+                        return;
+
+                    }
+
+
+                    doctorSelect.innerHTML =
+                        '<option value="">-- Choose a Doctor --</option>';
+
+
+                    if (
+                        !Array.isArray(result.data) ||
+                        result.data.length === 0
+                    ) {
+
+                        doctorSelect.innerHTML =
+                            '<option value="">-- No Doctors Available --</option>';
+
+                        return;
+
+                    }
+
+
+                    result.data.forEach(
+                        doctor => {
+
+                            const option =
+                                document.createElement(
+                                    "option"
+                                );
+
+
+                            option.value =
+                                doctor.id;
+
+
+                            option.textContent =
+                                `${doctor.name} (${doctor.specialty}) - Rs. ${Number(
+                                    doctor.fee
+                                ).toLocaleString(
+                                    "en-US",
+                                    {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    }
+                                )}`;
+
+
+                            option.dataset.fee =
+                                doctor.fee;
+
+
+                            option.dataset.code =
+                                doctor.doctor_code;
+
+
+                            doctorSelect.appendChild(
+                                option
+                            );
+
+                        }
+                    );
+
+
+                    // =========================================
+                    // DOCTOR SELECTED FROM doctors.html
+                    // Example:
+                    // appointment.html?doc=DR001
+                    // =========================================
+
+                    const params =
+                        new URLSearchParams(
+                            window.location.search
+                        );
+
+
+                    const doctorCode =
+                        params.get("doc");
+
+
+                    if (doctorCode) {
+
+                        const matchingOption =
+                            Array.from(
+                                doctorSelect.options
+                            ).find(
+                                option =>
+                                    option.dataset.code ===
+                                    doctorCode
+                            );
+
+
+                        if (matchingOption) {
+
+                            doctorSelect.value =
+                                matchingOption.value;
+
+
+                            doctorSelect.dispatchEvent(
+                                new Event("change")
+                            );
+
+                        }
+
+                    }
+
+                }
+
+                catch (error) {
+
+                    console.error(
+                        "Doctor loading error:",
+                        error
+                    );
+
+
+                    doctorSelect.innerHTML =
+                        '<option value="">-- Server Error --</option>';
+
+
+                    alert(
+                        "Unable to connect to the server."
+                    );
+
+                }
+
+            }
+
+
+            // =========================================
+            // DOCTOR CHANGE
+            // LOAD ASSIGNED HOSPITALS
+            // =========================================
+
+            doctorSelect.addEventListener(
+                "change",
+                async () => {
+
+
+                    hospitalSelect.innerHTML =
+                        '<option value="">-- Loading Hospitals... --</option>';
+
+                    hospitalSelect.disabled =
+                        true;
+
+
+                    resetDate();
+
+                    resetTimeSlots();
+
+
+                    doctorFee =
+                        0;
+
+                    hospitalFee =
+                        0;
+
+                    calculateTotalPay();
+
+
+                    const doctorId =
+                        doctorSelect.value;
+
+
+                    if (!doctorId) {
+
+                        resetHospitals();
+                        resetDate();
+                        resetTimeSlots();
+
+                        return;
+
+                    }
+
+
+                    const selectedDoctor =
+                        doctorSelect.options[
+                            doctorSelect.selectedIndex
+                        ];
+
+
+                    doctorFee =
+                        Number(
+                            selectedDoctor.dataset.fee
+                        ) || 0;
+
+
+                    calculateTotalPay();
+
+
+                    try {
+
+                        const response =
+                            await fetch(
+                                `backend/doctor_hospitals.php?doctor_id=${encodeURIComponent(
+                                    doctorId
+                                )}`
+                            );
+
+
+                        if (!response.ok) {
+
+                            throw new Error(
+                                "HTTP Error: " +
+                                response.status
+                            );
+
+                        }
+
+
+                        const result =
+                            await response.json();
+
+
+                        console.log(
+                            "Hospitals:",
+                            result
+                        );
+
+
+                        if (!result.success) {
+
+                            hospitalSelect.innerHTML =
+                                '<option value="">-- No Hospitals Found --</option>';
+
+                            console.error(
+                                result.message
+                            );
+
+                            return;
+
+                        }
+
+
+                        if (
+                            !Array.isArray(result.data) ||
+                            result.data.length === 0
+                        ) {
+
+                            hospitalSelect.innerHTML =
+                                '<option value="">-- No Hospitals Assigned --</option>';
+
+                            return;
+
+                        }
+
+
+                        hospitalSelect.innerHTML =
+                            '<option value="">-- Choose a Hospital --</option>';
+
+
+                        result.data.forEach(
+                            hospital => {
+
+                                const option =
+                                    document.createElement(
+                                        "option"
+                                    );
+
+
+                                option.value =
+                                    hospital.id;
+
+
+                                option.textContent =
+                                    `${hospital.name} (${hospital.district}) - Rs. ${Number(
+                                        hospital.fee
+                                    ).toLocaleString(
+                                        "en-US",
+                                        {
+                                            minimumFractionDigits: 2,
+                                            maximumFractionDigits: 2
+                                        }
+                                    )}`;
+
+
+                                option.dataset.fee =
+                                    hospital.fee;
+
+
+                                option.dataset.telephone =
+                                    hospital.telephone || "";
+
+
+                                hospitalSelect.appendChild(
+                                    option
+                                );
+
+                            }
+                        );
+
+
+                        hospitalSelect.disabled =
+                            false;
+
+                    }
+
+                    catch (error) {
+
+                        console.error(
+                            "Hospital loading error:",
+                            error
+                        );
+
+
+                        hospitalSelect.innerHTML =
+                            '<option value="">-- Server Error --</option>';
+
+
+                        alert(
+                            "Unable to load hospitals."
+                        );
+
+                    }
+
+                }
+            );
+
+
+            // =========================================
+            // HOSPITAL CHANGE
+            // ENABLE DATE
+            // =========================================
+
+            hospitalSelect.addEventListener(
+                "change",
+                () => {
+
+
+                    resetTimeSlots();
+
+
+                    hospitalFee =
+                        0;
+
+
+                    const hospitalId =
+                        hospitalSelect.value;
+
+
+                    if (!hospitalId) {
+
+                        resetDate();
+                        calculateTotalPay();
+
+                        return;
+
+                    }
+
+
+                    const selectedHospital =
+                        hospitalSelect.options[
+                            hospitalSelect.selectedIndex
+                        ];
+
+
+                    hospitalFee =
+                        Number(
+                            selectedHospital.dataset.fee
+                        ) || 0;
+
+
+                    calculateTotalPay();
+
+
+                    // Enable date
+
+                    appointmentDate.disabled =
+                        false;
+
+
+                    appointmentDate.focus();
+
+                }
+            );
+
+
+            // =========================================
+            // DATE CHANGE
+            // LOAD AVAILABLE TIME SLOTS
+            // =========================================
+
+            appointmentDate.addEventListener(
+                "change",
+                async () => {
+
+
+                    resetTimeSlots();
+
+
+                    const dateValue =
+                        appointmentDate.value;
+
+
+                    const doctorId =
+                        doctorSelect.value;
+
+
+                    const hospitalId =
+                        hospitalSelect.value;
+
+
+                    if (
+                        !dateValue ||
+                        !doctorId ||
+                        !hospitalId
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    const dayOfWeek =
+                        getDayOfWeek(
+                            dateValue
+                        );
+
+
+                    slotSelect.innerHTML =
+                        '<option value="">-- Loading Time Slots... --</option>';
+
+                    slotSelect.disabled =
+                        true;
+
+
+                    try {
+
+                        const response =
+                            await fetch(
+                                `backend/schedules.php?doctor_id=${encodeURIComponent(
+                                    doctorId
+                                )}&hospital_id=${encodeURIComponent(
+                                    hospitalId
+                                )}&day_of_week=${encodeURIComponent(
+                                    dayOfWeek
+                                )}`
+                            );
+
+
+                        if (!response.ok) {
+
+                            throw new Error(
+                                "HTTP Error: " +
+                                response.status
+                            );
+
+                        }
+
+
+                        const result =
+                            await response.json();
+
+
+                        console.log(
+                            "Schedules:",
+                            result
+                        );
+
+
+                        if (!result.success) {
+
+                            slotSelect.innerHTML =
+                                '<option value="">-- Unable to Load Time Slots --</option>';
+
+                            console.error(
+                                result.message
+                            );
+
+                            return;
+
+                        }
+
+
+                        if (
+                            !Array.isArray(result.data) ||
+                            result.data.length === 0
+                        ) {
+
+                            slotSelect.innerHTML =
+                                `<option value="">-- No Time Slots Available for ${dayOfWeek} --</option>`;
+
+                            return;
+
+                        }
+
+
+                        // =========================================
+                        // ADD TIME SLOTS
+                        // =========================================
+
+                        slotSelect.innerHTML =
+                            `<option value="">-- Choose a Time Slot (${dayOfWeek}) --</option>`;
+
+
+                        result.data.forEach(
+                            schedule => {
+
+                                const option =
+                                    document.createElement(
+                                        "option"
+                                    );
+
+
+                                option.value =
+                                    schedule.id;
+
+
+                                option.textContent =
+                                    `${formatTime(
+                                        schedule.start_time
+                                    )} - ${formatTime(
+                                        schedule.end_time
+                                    )}`;
+
+
+                                // Store schedule information
+
+                                option.dataset.startTime =
+                                    schedule.start_time;
+
+                                option.dataset.endTime =
+                                    schedule.end_time;
+
+                                option.dataset.day =
+                                    schedule.day_of_week;
+
+
+                                slotSelect.appendChild(
+                                    option
+                                );
+
+                            }
+                        );
+
+
+                        slotSelect.disabled =
+                            false;
+
+                    }
+
+                    catch (error) {
+
+                        console.error(
+                            "Schedule loading error:",
+                            error
+                        );
+
+
+                        slotSelect.innerHTML =
+                            '<option value="">-- Server Error --</option>';
+
+
+                        alert(
+                            "Unable to load time slots."
+                        );
+
+                    }
+
+                }
+            );
+
+
+            // =========================================
+            // FORM SUBMIT
+            // =========================================
+
+            form.addEventListener(
+                "submit",
+                async function (e) {
+
+                    e.preventDefault();
+
+
+                    // =========================================
+                    // GET FORM VALUES
+                    // =========================================
+
+                    const name =
+                        document
+                            .getElementById("patientName")
+                            .value
+                            .trim();
+
+
+                    const nic =
+                        document
+                            .getElementById("patientNIC")
+                            .value
+                            .trim();
+
+
+                    const phone =
+                        document
+                            .getElementById("patientPhone")
+                            .value
+                            .trim();
+
+
+                    const email =
+                        document
+                            .getElementById("patientEmail")
+                            .value
+                            .trim();
+
+
+                    const date =
+                        appointmentDate.value;
+
+
+                    const doctorId =
+                        doctorSelect.value;
+
+
+                    const hospitalId =
+                        hospitalSelect.value;
+
+
+                    const slotId =
+                        slotSelect.value;
+
+
+                    // =========================================
+                    // PATIENT NAME VALIDATION
+                    // =========================================
+
+                    if (
+                        !/^[A-Za-z\s.]+$/.test(name)
+                    ) {
+
+                        alert(
+                            "Please enter a valid patient name."
+                        );
+
+                        return;
+
+                    }
+
+
+                    // =========================================
+                    // NIC VALIDATION
+                    // =========================================
+
+                    if (
+                        !/^[0-9]{9}[vVxX]$/.test(nic) &&
+                        !/^[0-9]{12}$/.test(nic)
+                    ) {
+
+                        alert(
+                            "Please enter a valid NIC number."
+                        );
+
+                        return;
+
+                    }
+
+
+                    // =========================================
+                    // PHONE VALIDATION
+                    // =========================================
+
+                    if (
+                        !/^[0-9]{9}$/.test(phone)
+                    ) {
+
+                        alert(
+                            "Mobile number must contain 9 digits after +94."
+                        );
+
+                        return;
+
+                    }
+
+
+                    // =========================================
+                    // EMAIL VALIDATION
+                    // =========================================
+
+                    if (
+                        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+                    ) {
+
+                        alert(
+                            "Please enter a valid email address."
+                        );
+
+                        return;
+
+                    }
+
+
+                    // =========================================
+                    // DOCTOR VALIDATION
+                    // =========================================
+
+                    if (!doctorId) {
+
+                        alert(
+                            "Please select a doctor."
+                        );
+
+                        return;
+
+                    }
+
+
+                    // =========================================
+                    // HOSPITAL VALIDATION
+                    // =========================================
+
+                    if (!hospitalId) {
+
+                        alert(
+                            "Please select a hospital."
+                        );
+
+                        return;
+
+                    }
+
+
+                    // =========================================
+                    // DATE VALIDATION
+                    // =========================================
+
+                    if (!date) {
+
+                        alert(
+                            "Please select an appointment date."
+                        );
+
+                        return;
+
+                    }
+
+
+                    // =========================================
+                    // TIME SLOT VALIDATION
+                    // =========================================
+
+                    if (!slotId) {
+
+                        alert(
+                            "Please select a time slot."
+                        );
+
+                        return;
+
+                    }
+
+
+                    // =========================================
+                    // CREATE FORM DATA
+                    // =========================================
+
+                    const formData =
+                        new FormData();
+
+
+                    formData.append(
+                        "patient_name",
+                        name
+                    );
+
+
+                    formData.append(
+                        "patient_nic",
+                        nic
+                    );
+
+
+                    formData.append(
+                        "patient_phone",
+                        "+94" + phone
+                    );
+
+
+                    formData.append(
+                        "patient_email",
+                        email
+                    );
+
+
+                    formData.append(
+                        "doctor_id",
+                        doctorId
+                    );
+
+
+                    formData.append(
+                        "hospital_id",
+                        hospitalId
+                    );
+
+
+                    formData.append(
+                        "schedule_id",
+                        slotId
+                    );
+
+
+                    formData.append(
+                        "appointment_date",
+                        date
+                    );
+
+
+                    formData.append(
+                        "reason",
+                        document
+                            .getElementById("reason")
+                            .value
+                            .trim()
+                    );
+
+
+                    // =========================================
+                    // SEND TO PHP
+                    // =========================================
+
+                    try {
+
+                        const response =
+                            await fetch(
+                                "backend/book_appointment.php",
+                                {
+                                    method: "POST",
+                                    body: formData
+                                }
+                            );
+
+
+                        if (!response.ok) {
+
+                            throw new Error(
+                                "HTTP Error: " +
+                                response.status
+                            );
+
+                        }
+
+
+                        const result =
+                            await response.json();
+
+
+                        console.log(
+                            "Booking result:",
+                            result
+                        );
+
+
+                        // =========================================
+                        // BOOKING SUCCESS
+                        // =========================================
+
+                        if (result.success) {
+
+                            alert(
+                                "Appointment booked successfully!\n\n" +
+
+                                "Appointment ID: " +
+
+                                result.appointment_id +
+
+                                "\n\n" +
+
+                                "Total Payment: Rs. " +
+
+                                Number(
+                                    result.total_payment
+                                ).toLocaleString(
+                                    "en-US",
+                                    {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    }
+                                )
+                            );
+
+
+                            // Reset form
+
+                            form.reset();
+
+
+                            // Reset dropdowns
+
+                            doctorSelect.innerHTML =
+                                '<option value="">-- Choose a Doctor --</option>';
+
+
+                            hospitalSelect.innerHTML =
+                                '<option value="">-- Choose a Doctor First --</option>';
+
+
+                            slotSelect.innerHTML =
+                                '<option value="">-- Choose a Date First --</option>';
+
+
+                            hospitalSelect.disabled =
+                                true;
+
+
+                            appointmentDate.disabled =
+                                true;
+
+
+                            slotSelect.disabled =
+                                true;
+
+
+                            // Reset fees
+
+                            doctorFee =
+                                0;
+
+                            hospitalFee =
+                                0;
+
+
+                            calculateTotalPay();
+
+
+                            // Reload doctors
+
+                            loadDoctors();
+
+                        }
+
+
+                        // =========================================
+                        // BOOKING FAILED
+                        // =========================================
+
+                        else {
+
+                            alert(
+                                "Appointment failed!\n\n" +
+
+                                (
+                                    result.message ||
+                                    "Unknown error occurred."
+                                )
+                            );
+
+                        }
+
+                    }
+
+                    catch (error) {
+
+                        console.error(
+                            "Booking error:",
+                            error
+                        );
+
+
+                        alert(
+                            "Unable to connect to the server."
+                        );
+
+                    }
+
+                }
+            );
+
+
+            // =========================================
+            // START APPLICATION
+            // =========================================
+
+            resetHospitals();
+
+            resetDate();
+
+            resetTimeSlots();
+
+            calculateTotalPay();
+
+            loadDoctors();
+
+        });
+
+    </script>
+
+</body>
+
+</html>
+
