@@ -40,7 +40,7 @@ $result = $conn->query($sql);
             <div style="
                 font-size: 13px;
                 opacity: 0.85;
-                margin-bottom: 5px;
+                margin-bottom: 10px;
             ">
                 fctCare Administration
             </div>
@@ -51,16 +51,13 @@ $result = $conn->query($sql);
 
         </div>
 
-        <div style="
-            display: flex;
-            gap: 10px;
-        ">
+        <div>
 
             <a href="dashboard.php" class="btn">
                 ← Dashboard
             </a>
 
-            <a href="logout.php" class="btn btn-danger">
+            <a href="logout.php" class="btn btn-danger" style="margin-top: 20px;">
                 Logout
             </a>
 

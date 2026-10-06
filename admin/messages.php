@@ -104,8 +104,13 @@ $result = $conn->query(
     <!-- ================= SIDEBAR ================= -->
 
     <aside class="sidebar">
+        <div class="sidebar-brand">
 
-        <h2>fctCare</h2>
+          <img src="logo.jpeg" alt="fctCare Logo" class="logo"> 
+            <h2>fctCare</h2>
+        </div>
+
+        
 
         <p class="admin-label">
             Admin Panel

@@ -126,6 +126,7 @@ body {
 
 .sidebar {
     width: 230px;
+    min-height: 100vh;
     background: linear-gradient(
         135deg,
         #087f78,
@@ -133,27 +134,40 @@ body {
     );
     color: white;
     padding: 25px 15px;
+    box-sizing: border-box;
+    display: flex; 
+    flex-direction: column;
 }
 
+/* ========================= LOGO + fctCare NAME ========================= */
+
+
+
 .sidebar h2 {
-    margin: 0;
-    font-size: 28px;
-    text-align: center;
+    margin: 0; 
+    font-size: 25px; 
+    font-weight: 700; 
+    display: flex; 
+    
+    text-align: left;
 }
 
 .admin-label {
-    text-align: center;
+    text-align: left;
     color: #cbd5e1;
-    margin-bottom: 30px;
+   
+    margin: 0 0 40px 80px;
 }
 
 .sidebar a {
     display: block;
     text-decoration: none;
     color: white;
-    padding: 13px 15px;
-    margin-bottom: 8px;
+    padding: 13px 20px;
+    margin-bottom: 6px;
+    margin-left: 55px;
     border-radius: 6px;
+    
 }
 
 .sidebar a:hover {
@@ -167,6 +181,29 @@ body {
 
 .sidebar .logout:hover {
     background: #b91c1c;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    
+}
+
+.sidebar-brand .logo {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    border-radius: 10px;
+    
+
+}
+
+.sidebar-brand h2 {
+    margin:0;
+    font-size: 25px;
+    font-weight: 700;
+    color: white;
 }
 
 
@@ -544,7 +581,7 @@ body {
     width: 90%;
     max-width: 1250px;
 
-    margin: 35px auto;
+    margin: 35px 20px;
 }
 
 /* ---------- Page Title ---------- */

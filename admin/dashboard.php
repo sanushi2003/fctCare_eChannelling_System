@@ -126,9 +126,11 @@ $conn->close();
         ================================= -->
 
         <aside class="sidebar">
-           
-            <h2>fctCare</h2>
+        <div class="sidebar-brand">
 
+          <img src="logo.jpeg" alt="fctCare Logo" class="logo"> 
+            <h2>fctCare</h2>
+        </div>
             <p class="admin-label">
                 Admin Panel
             </p>

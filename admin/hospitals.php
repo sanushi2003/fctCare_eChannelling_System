@@ -42,7 +42,7 @@ $result = $conn->query("SELECT * FROM hospitals ORDER BY id DESC");
             <div style="
                 font-size: 13px;
                 opacity: 0.85;
-                margin-bottom: 5px;
+                margin-bottom: 10px;
             ">
                 fctCare Administration
             </div>
@@ -63,7 +63,7 @@ $result = $conn->query("SELECT * FROM hospitals ORDER BY id DESC");
             <a
                 href="logout.php"
                 class="btn btn-danger"
-                style="margin-left: 8px;"
+                style="margin-top: 20px;"
             >
                 Logout
             </a>
@@ -89,7 +89,7 @@ $result = $conn->query("SELECT * FROM hospitals ORDER BY id DESC");
                     Hospital Directory
                 </h2>
 
-                <p>
+                <p style="color: #667085;"> 
                     Manage hospitals available in the fctCare system.
                 </p>
 
