@@ -2,9 +2,9 @@
 require_once "backend/config/session.php";
 
 /*
-|--------------------------------------------------------------------------
-| PROFILE LINK SETTINGS  (change these to match your folders)
-|--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+PROFILE LINK SETTINGS  (change these to match your folders)
+--------------------------------------------------------------------------
 */
 
 $avatar_image = "img 1.jpg";   // small picture shown left of "Profile"

@@ -20,17 +20,13 @@ $profile_link = $dashboards[$user_type] ?? "login.php";
 
 
 /*
-|--------------------------------------------------------------------------
-| DISTRICT SEARCH TERM
-|--------------------------------------------------------------------------
+DISTRICT SEARCH TERM
 */
 
 $search_district = trim((string)($_GET["district"] ?? ""));
 
 /*
-|--------------------------------------------------------------------------
-| LOAD HOSPITALS FROM DATABASE (FILTERED BY DISTRICT IF SEARCHED)
-|--------------------------------------------------------------------------
+LOAD HOSPITALS FROM DATABASE (FILTERED BY DISTRICT IF SEARCHED)
 */
 
 $hospitals = [];
@@ -89,11 +85,9 @@ if ($result) {
 
 }
 
-/*
-|--------------------------------------------------------------------------
-| HTML ESCAPE FUNCTION
-|--------------------------------------------------------------------------
-*/
+
+
+//HTML ESCAPE FUNCTION
 
 function e($value)
 {
@@ -400,6 +394,7 @@ function e($value)
 
 <main class="container">
 
+
     <!-- District search (top right, under the navigation bar) -->
 
     <div class="search-wrap">
@@ -485,7 +480,7 @@ function e($value)
                     <?php
 
                     /*
-                     * Group hospitals by district.
+                     Group hospitals by district.
                      */
 
                     $district_groups = [];
@@ -732,11 +727,14 @@ function e($value)
 
 <script>
 
+
+
+
 /*
-|--------------------------------------------------------------------------
-| SHOW DATABASE SCHEDULES
-|--------------------------------------------------------------------------
-| Hospital ID is used to identify the selected hospital.
+-----------------------------
+SHOW DATABASE SCHEDULES
+---------------------------------------
+ Hospital ID is used to identify the selected hospital.
 */
 
 async function showSchedule(hospitalId, hospitalName) {
@@ -911,9 +909,9 @@ async function showSchedule(hospitalId, hospitalName) {
 
 
 /*
-|--------------------------------------------------------------------------
-| CLOSE SCHEDULE MODAL
-|--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+ CLOSE SCHEDULE MODAL
+--------------------------------------------------------------------------
 */
 
 function closeScheduleModal() {
@@ -926,9 +924,9 @@ function closeScheduleModal() {
 
 
 /*
-|--------------------------------------------------------------------------
-| FORMAT TIME
-|--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+ FORMAT TIME
+--------------------------------------------------------------------------
 */
 
 function formatTime(time) {
@@ -965,10 +963,10 @@ function formatTime(time) {
 
 
 /*
-|--------------------------------------------------------------------------
-| ESCAPE HTML
-|--------------------------------------------------------------------------
-| Prevent database values from being interpreted as HTML.
+--------------------------------------------------------------------------
+ ESCAPE HTML
+--------------------------------------------------------------------------
+ Prevent database values from being interpreted as HTML.
 */
 
 function escapeHTML(value) {
@@ -991,9 +989,9 @@ function escapeHTML(value) {
 
 
 /*
-|--------------------------------------------------------------------------
-| CLOSE MODAL BY CLICKING OUTSIDE
-|--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+ CLOSE MODAL BY CLICKING OUTSIDE
+--------------------------------------------------------------------------
 */
 
 document.getElementById("scheduleModal").addEventListener(
@@ -1009,9 +1007,9 @@ document.getElementById("scheduleModal").addEventListener(
 
 
 /*
-|--------------------------------------------------------------------------
-| CLOSE MODAL WITH ESCAPE KEY
-|--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+ CLOSE MODAL WITH ESCAPE KEY
+--------------------------------------------------------------------------
 */
 
 document.addEventListener("keydown", function(event) {

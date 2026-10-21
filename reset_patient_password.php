@@ -1,4 +1,3 @@
-```php
 <?php
 
 error_reporting(E_ALL);
@@ -38,4 +37,4 @@ $stmt->close();
 $conn->close();
 
 ?>
-```
+
