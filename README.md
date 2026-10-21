@@ -108,7 +108,7 @@ Follow these steps to run the project on a Windows computer using XAMPP.
 * Git, if you want to clone the repository.
 * A modern web browser.
 
-### Step 1: Clone the Repository
+### 1: Clone the Repository
 
 Open Git Bash or Command Prompt and run:
 
@@ -116,7 +116,7 @@ Open Git Bash or Command Prompt and run:
 git clone https://github.com/sanushi2003/fctCare_eChannelling_System.git
 ```
 
-### Step 2: Move the Project into the XAMPP Folder
+### 2: Move the Project into the XAMPP Folder
 
 Place the project folder inside:
 
@@ -130,7 +130,7 @@ The project path should look like this:
 C:\xampp\htdocs\fctCare_eChannelling_System
 ```
 
-### Step 3: Start XAMPP
+### 3: Start XAMPP
 
 Open the XAMPP Control Panel and start these services:
 
@@ -139,7 +139,7 @@ Open the XAMPP Control Panel and start these services:
 
 Make sure both services are running.
 
-### Step 4: Create the Database
+### 4: Create the Database
 
 1. Open `http://localhost/phpmyadmin` in your browser.
 2. Create a database named `fctcare_db`.
@@ -148,7 +148,7 @@ Make sure both services are running.
 
 The website may not work correctly until the required database tables and columns are available.
 
-### Step 5: Configure the Database Connection
+### 5: Configure the Database Connection
 
 Open the database configuration file:
 
@@ -171,7 +171,7 @@ Keep the existing database connection code and update the settings only when nec
 
 Do not publish private credentials or production passwords on GitHub.
 
-### Step 6: Open the Website
+### 6: Open the Website
 
 Open your browser and visit:
 
