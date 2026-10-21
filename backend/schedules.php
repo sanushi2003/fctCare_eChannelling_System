@@ -5,6 +5,9 @@ require_once "config/db.php";
 
 header("Content-Type: application/json");
 
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Pragma: no-cache");
+
 $doctor_id = intval($_GET["doctor_id"] ?? 0);
 $hospital_id = intval($_GET["hospital_id"] ?? 0);
 $day_of_week = trim($_GET["day_of_week"] ?? "");
@@ -14,9 +17,7 @@ $day_of_week = trim($_GET["day_of_week"] ?? "");
 |--------------------------------------------------------------------------
 | 1. Appointment Page Request
 |--------------------------------------------------------------------------
-| doctor_id + hospital_id + day_of_week ලබාදුන්නොත්
-| ඒ doctor, hospital සහ selected day එකට අදාල
-| Active schedules විතරක් ලබාදෙයි.
+| 
 */
 
 if ($doctor_id > 0 && $hospital_id > 0 && $day_of_week !== "") {
@@ -52,9 +53,7 @@ if ($doctor_id > 0 && $hospital_id > 0 && $day_of_week !== "") {
 |--------------------------------------------------------------------------
 | 2. Hospitals Page Request
 |--------------------------------------------------------------------------
-| Filters නැතුව schedules.php call කළොත්
-| සියලු Active schedules ලබාදෙයි.
-| Doctor සහ Hospital namesත් එක්ක.
+| 
 */
 
 else {

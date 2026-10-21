@@ -133,13 +133,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Edit Hospital - fctCare Admin</title>
+    <link rel="icon" type="image/jpeg" href="../logo.jpeg">
 
     <link rel="stylesheet" href="admin.css">
 
 </head>
 
 
-<body>
+<body style="
+    background:
+        linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.35)),
+        url('../bb.avif') center center / cover no-repeat fixed;
+    min-height:100vh;
+">
 
 
 <div class="admin-container">
@@ -151,12 +157,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         <div>
 
-            <div style="
-                font-size: 13px;
-                opacity: 0.85;
-                margin-bottom: 5px;
-            ">
-                fctCare Administration
+            <div class="brand">
+                <img src="logo.jpeg" alt="fctCare Logo" class="logo">
+                fct<span>Care</span>
             </div>
 
             <h1>
@@ -170,7 +173,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <a
                 href="hospitals.php"
-                class="btn"
+                class="btnb"
             >
                 ← Hospital Directory
             </a>
@@ -425,20 +428,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 <!-- ================= BUTTONS ================= -->
 
-                <div style="
-                    display: flex;
-                    gap: 12px;
-                    margin-top: 30px;
-                ">
+                <div class="form-actions">
 
 
                     <button
                         type="submit"
                         class="btn btn-confirm"
-                        style="
-                            flex: 1;
-                            padding: 14px;
-                        "
+                        
                     >
                         ✓ Update Hospital
                     </button>
@@ -446,13 +442,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                     <a
                         href="hospitals.php"
-                        class="btn"
-                        style="
-                            flex: 1;
-                            padding: 14px;
-                            background: #f2f4f7;
-                            color: #344054;
-                        "
+                        class="btn btn-secondary"
                     >
                         Cancel
                     </a>

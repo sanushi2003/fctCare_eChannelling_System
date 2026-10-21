@@ -71,6 +71,9 @@ $result = $conn->query(
      ORDER BY created_at DESC"
 );
 
+
+$current = basename($_SERVER["PHP_SELF"]);
+
 ?>
 
 <!DOCTYPE html>
@@ -86,6 +89,7 @@ $result = $conn->query(
     >
 
     <title>Messages - Admin</title>
+    <link rel="icon" type="image/jpeg" href="../logo.jpeg">
 
     <link
         rel="stylesheet"
@@ -95,7 +99,12 @@ $result = $conn->query(
 </head>
 
 
-<body>
+<body style="
+    background:
+        linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.35)),
+        url('../bb.avif') center center / cover no-repeat fixed;
+    min-height:100vh;
+">
 
 
 <div class="admin-container">
@@ -107,7 +116,7 @@ $result = $conn->query(
         <div class="sidebar-brand">
 
           <img src="logo.jpeg" alt="fctCare Logo" class="logo"> 
-            <h2>fctCare</h2>
+           fct<span>Care</span>
         </div>
 
         
@@ -117,42 +126,14 @@ $result = $conn->query(
         </p>
 
 
-        <a href="dashboard.php">
-            Dashboard
-        </a>
+        <a href="dashboard.php"    class="<?= $current === 'dashboard.php'    ? 'active' : '' ?>">Dashboard</a>
+    <a href="appointments.php" class="<?= $current === 'appointments.php' ? 'active' : '' ?>">Appointments</a>
+    <a href="messages.php"     class="<?= $current === 'messages.php'     ? 'active' : '' ?>">Messages</a>
+    <a href="doctors.php"      class="<?= $current === 'doctors.php'      ? 'active' : '' ?>">Doctors</a>
+    <a href="hospitals.php"    class="<?= $current === 'hospitals.php'    ? 'active' : '' ?>">Hospitals</a>
+    <a href="schedules.php"    class="<?= $current === 'schedules.php'    ? 'active' : '' ?>">Schedules</a>
 
-
-        <a href="appointments.php">
-            Appointments
-        </a>
-
-
-        <a href="messages.php">
-            Messages
-        </a>
-
-
-        <a href="doctors.php">
-            Doctors
-        </a>
-
-
-        <a href="hospitals.php">
-            Hospitals
-        </a>
-
-
-        <a href="schedules.php">
-            Schedules
-        </a>
-
-
-        <a
-            href="logout.php"
-            class="logout"
-        >
-            Logout
-        </a>
+    <a href="logout.php" class="logout">Logout</a>
 
     </aside>
 
@@ -460,6 +441,67 @@ $result = $conn->query(
 
 
 </div>
+
+
+<footer class="footer">
+        <div class="footer-top">
+
+            <div class="footer-brand">
+                <a href="index.php" class="footer-logo">
+                    <img src="../logo.jpeg" alt="fctCare Logo">
+                    <span>fctCare</span>
+                </a>
+                <p>Sri Lanka's e-channeling framework. Book appointments with top doctors and leading hospitals from the comfort of your home.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="../index.php">Home</a></li>
+                    <li><a href="../about.php">About</a></li>
+                    <li><a href="../doctors.php">Doctors</a></li>
+                    <li><a href="../hospitals.php">Hospitals</a></li>
+                    <li><a href="../appointment.php">Appointment</a></li>
+                    <li><a href="../contact.php">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-contact">
+                <div class="contact-item">
+                    <h4>Phone Number</h4>
+                    <a href="tel:+94112345678">+94 11 234 5678</a>
+                </div>
+                <div class="contact-item">
+                    <h4>Email Address</h4>
+                    <a href="mailto:info@fctcare.com">info@fctcare.com</a>
+                </div>
+                <div class="contact-item">
+                    <h4>eChannelling Hotline Operating Hours</h4>
+                    <span>7:00 AM – 9:00 PM</span>
+                </div>
+            </div>
+
+            <div class="footer-col footer-contact">
+                <div class="contact-item">
+                    <h4>Address</h4>
+                    <address style="font-style: normal;">
+                        eChannelling PLC, No: 108,<br>
+                        W A D Ramanayake Mawatha,<br>
+                        Colombo 2, Sri Lanka
+                    </address>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 fctCare. Book. Channel. Care.</p>
+            <p class="footer_text">FCT • KELANIYA</p>
+            <a href="#" class="back-to-top" aria-label="Back to top">↑ Back to top</a>
+        </div>
+    </footer>
+
+    
 
 
 </body>

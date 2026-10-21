@@ -161,6 +161,7 @@ if ($selected_doctor > 0) {
     >
 
     <title>Doctor Hospitals - fctCare Admin</title>
+    <link rel="icon" type="image/jpeg" href="../logo.jpeg">
 
     <link
         rel="stylesheet"
@@ -170,7 +171,12 @@ if ($selected_doctor > 0) {
 </head>
 
 
-<body>
+<body style="
+    background:
+        linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.35)),
+        url('../bb.avif') center center / cover no-repeat fixed;
+    min-height:100vh;
+">
 
 
 <div class="admin-container">

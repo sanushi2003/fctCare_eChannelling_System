@@ -1,52 +1,48 @@
 
+
 <?php
 
 require_once "config/db.php";
 
 header("Content-Type: application/json");
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Pragma: no-cache");
 
-// ================= CHECK DOCTOR ID =================
-
-if (!isset($_GET["doctor_id"])) {
-
-    echo json_encode([
-        "success" => false,
-        "message" => "Doctor ID is required."
-    ]);
-
-    exit;
-}
-
-$doctor_id = intval($_GET["doctor_id"]);
+$doctor_id = intval($_GET["doctor_id"] ?? 0);
 
 if ($doctor_id <= 0) {
 
     echo json_encode([
         "success" => false,
-        "message" => "Invalid Doctor ID."
+        "message" => "Invalid doctor ID."
     ]);
 
     exit;
 }
-
-// ================= GET ASSIGNED HOSPITALS =================
 
 $stmt = $conn->prepare(
     "SELECT
         h.id,
         h.name,
         h.district,
-        h.telephone,
-        h.fee
-     FROM doctor_hospitals dh
-     INNER JOIN hospitals h
-        ON dh.hospital_id = h.id
-     WHERE dh.doctor_id = ?
+        h.fee,
+        h.telephone
+     FROM hospitals h
+     WHERE h.id IN (
+            SELECT dh.hospital_id
+            FROM doctor_hospitals dh
+            WHERE dh.doctor_id = ?
+        )
+        OR h.id IN (
+            SELECT s.hospital_id
+            FROM schedules s
+            WHERE s.doctor_id = ?
+              AND s.status = 'Active'
+        )
      ORDER BY h.name ASC"
 );
 
-$stmt->bind_param("i", $doctor_id);
-
+$stmt->bind_param("ii", $doctor_id, $doctor_id);
 $stmt->execute();
 
 $result = $stmt->get_result();
@@ -54,21 +50,13 @@ $result = $stmt->get_result();
 $hospitals = [];
 
 while ($row = $result->fetch_assoc()) {
-
-    $hospitals[] = [
-        "id" => $row["id"],
-        "name" => $row["name"],
-        "district" => $row["district"],
-        "telephone" => $row["telephone"],
-        "fee" => $row["fee"]
-    ];
+    $hospitals[] = $row;
 }
-
-// ================= RESPONSE =================
 
 echo json_encode([
     "success" => true,
-    "data" => $hospitals
+    "version" => "v3",
+    "data"    => $hospitals
 ]);
 
 $stmt->close();

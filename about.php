@@ -1,3 +1,28 @@
+
+
+
+<?php
+
+require_once "backend/config/session.php";
+require_once "backend/config/db.php";
+
+
+$avatar_image = "img 1.jpg";
+
+$dashboards = [
+    "patient" => "patient/dashboard.php",
+    "doctor"  => "doctor/dashboard.php",
+    "admin"   => "admin/dashboard.php"
+];
+
+$user_type = strtolower((string) ($_SESSION["user_type"] ?? ""));
+
+$profile_link = $dashboards[$user_type] ?? "login.php";
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,6 +77,25 @@
         }
         .background h2::after {
             background-color: #ffffff;
+        }
+
+        .profile-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white !important;
+            
+    
+            background: rgba(5, 123, 115, 0.55);
+            padding: 5px 16px 5px 5px;
+            border-radius: 50px;
+        }
+
+        .profile-btn img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            object-fit: cover;
         }
         
         .about h2::after, .title::after {
@@ -203,18 +247,47 @@
 <body>
 
     <nav class="navbar">
-        <a href="index.html" class="brand">
+        <a href="index.php" class="brand">
             <img src="logo.jpeg" alt="fctCare Logo" class="logo">
             fct<span>Care</span>
         </a>
-        <div><span></span><span></span><span></span></div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html" class="active">About</a></li>
-            <li><a href="doctors.html">Doctors</a></li>
-            <li><a href="hospitals.html">Hospitals</a></li>
-            <li><a href="appointment.html">Appointment</a></li>
-            <li><a href="contact.html">Contact</a></li>
+        <button type="button" class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.php" class="active">Home</a></li>
+            <li><a href="about.php">About</a></li>
+            <li><a href="doctors.php">Doctors</a></li>
+            <li><a href="hospitals.php">Hospitals</a></li>
+            <li><a href="appointment.php">Appointment</a></li>
+            <li><a href="contact.php">Contact</a></li>
+             <?php
+                if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+                }
+            ?>
+            </li>
+    <?php if (isset($_SESSION["user_type"])): ?>
+
+        <a href="<?= htmlspecialchars($profile_link, ENT_QUOTES, 'UTF-8') ?>"
+           class="profile-btn">
+
+            <img src="<?= htmlspecialchars($avatar_image, ENT_QUOTES, 'UTF-8') ?>"
+                 alt="Profile">
+
+            Profile
+
+        </a>
+
+    <?php else: ?>
+
+        <a href="login.php" class="login-btn">🔒 Login</a>
+
+    <?php endif; ?>
+</li>
+
+
+
         </ul>
     </nav>
 
@@ -235,20 +308,52 @@
             </div>
         </section>
         
-        <div class="stats">
-            <div class="stat_box">
-                <h3 class="stat_number">30</h3>
-                <p>Specialist Doctors</p>
-            </div>
-            <div class="stat_box">
-                <h3 class="stat_number">15</h3>
-                <p>Partner Hospitals</p>
-            </div>
-            <div class="stat_box">
-                <h3 class="stat_number">100</h3>
-                <p>Patients</p>
-            </div>
-        </div>
+        <?php
+
+
+/* Count Specialist Doctors */
+$doctorQuery = "SELECT COUNT(*) AS total FROM doctors";
+$doctorResult = mysqli_query($conn, $doctorQuery);
+$doctorData = mysqli_fetch_assoc($doctorResult);
+$totalDoctors = $doctorData['total'];
+
+/* Count Partner Hospitals */
+$hospitalQuery = "SELECT COUNT(*) AS total FROM hospitals";
+$hospitalResult = mysqli_query($conn, $hospitalQuery);
+$hospitalData = mysqli_fetch_assoc($hospitalResult);
+$totalHospitals = $hospitalData['total'];
+
+/* Count Patients */
+$patientQuery = "SELECT COUNT(*) AS total FROM patients";
+$patientResult = mysqli_query($conn, $patientQuery);
+$patientData = mysqli_fetch_assoc($patientResult);
+$totalPatients = $patientData['total'];
+?>
+
+<div class="stats">
+
+    <div class="stat_box">
+        <h3 class="stat_number">
+            <?php echo $totalDoctors; ?>+
+        </h3>
+        <p>Specialist Doctors</p>
+    </div>
+
+    <div class="stat_box">
+        <h3 class="stat_number">
+            <?php echo $totalHospitals; ?>+
+        </h3>
+        <p>Partner Hospitals</p>
+    </div>
+
+    <div class="stat_box">
+        <h3 class="stat_number">
+            <?php echo $totalPatients; ?>+
+        </h3>
+        <p>Patients</p>
+    </div>
+
+</div>
 
         <div class="features">
             <h2 class="title">Why Choose fctCare?</h2>
@@ -309,9 +414,63 @@
     </main>
 
     <footer class="footer">
-        <p>&copy; 2026 fctCare. Book. Channel. Care.</p>
-        <p class="footer_text">FCT • KELANIYA</p>
+        <div class="footer-top">
+
+            <div class="footer-brand">
+                <a href="index.php" class="footer-logo">
+                    <img src="logo.jpeg" alt="fctCare Logo">
+                    <span>fctCare</span>
+                </a>
+                <p>Sri Lanka's e-channeling framework. Book appointments with top doctors and leading hospitals from the comfort of your home.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="about.php">About</a></li>
+                    <li><a href="doctors.php">Doctors</a></li>
+                    <li><a href="hospitals.php">Hospitals</a></li>
+                    <li><a href="appointment.php">Appointment</a></li>
+                    <li><a href="contact.php">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col footer-contact">
+                <div class="contact-item">
+                    <h4>Phone Number</h4>
+                    <a href="tel:+94112345678">+94 11 234 5678</a>
+                </div>
+                <div class="contact-item">
+                    <h4>Email Address</h4>
+                    <a href="mailto:info@fctcare.com">info@fctcare.com</a>
+                </div>
+                <div class="contact-item">
+                    <h4>eChannelling Hotline Operating Hours</h4>
+                    <span>7:00 AM – 9:00 PM</span>
+                </div>
+            </div>
+
+            <div class="footer-col footer-contact">
+                <div class="contact-item">
+                    <h4>Address</h4>
+                    <address style="font-style: normal;">
+                        eChannelling PLC, No: 108,<br>
+                        W A D Ramanayake Mawatha,<br>
+                        Colombo 2, Sri Lanka
+                    </address>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 fctCare. Book. Channel. Care.</p>
+            <p class="footer_text">FCT • KELANIYA</p>
+            <a href="#" class="back-to-top" aria-label="Back to top">↑ Back to top</a>
+        </div>
     </footer>
+
 
     <script src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -323,6 +482,27 @@
                 answer.slideToggle();
             });
         });
+
+        // Mobile hamburger menu toggle
+        (function () {
+            const btn = document.getElementById("hamburger");
+            const menu = document.getElementById("navLinks");
+
+            btn.addEventListener("click", function () {
+                const isOpen = menu.classList.toggle("show");
+                btn.classList.toggle("open", isOpen);
+                btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            });
+
+            // Close the menu after tapping a link
+            menu.querySelectorAll("a").forEach(function (link) {
+                link.addEventListener("click", function () {
+                    menu.classList.remove("show");
+                    btn.classList.remove("open");
+                    btn.setAttribute("aria-expanded", "false");
+                });
+            });
+        })();
     </script>
 </body>
 </html>

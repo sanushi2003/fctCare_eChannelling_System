@@ -107,6 +107,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
+$current = basename($_SERVER["PHP_SELF"]);
+
 ?>
 
 <!DOCTYPE html>
@@ -122,6 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     >
 
     <title>Add Schedule - Admin</title>
+    <link rel="icon" type="image/jpeg" href="../logo.jpeg">
 
     <link
         rel="stylesheet"
@@ -131,7 +134,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 
 
-<body>
+<body style="
+    background:
+        linear-gradient(rgba(255,255,255,0.35), rgba(255,255,255,0.35)),
+        url('../bb.avif') center center / cover no-repeat fixed;
+    min-height:100vh;
+">
 
 
 <div class="admin-container">
@@ -139,42 +147,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <aside class="sidebar">
 
-        <h2>fctCare</h2>
+        <div class="sidebar-brand">
+
+          <img src="logo.jpeg" alt="fctCare Logo" class="logo"> 
+            fct<span>Care</span>
+        </div>
 
         <p class="admin-label">
             Admin Panel
         </p>
 
-        <a href="dashboard.php">
-            Dashboard
-        </a>
+    <a href="dashboard.php"    class="<?= $current === 'dashboard.php'    ? 'active' : '' ?>">Dashboard</a>
+    <a href="appointments.php" class="<?= $current === 'appointments.php' ? 'active' : '' ?>">Appointments</a>
+    <a href="messages.php"     class="<?= $current === 'messages.php'     ? 'active' : '' ?>">Messages</a>
+    <a href="doctors.php"      class="<?= $current === 'doctors.php'      ? 'active' : '' ?>">Doctors</a>
+    <a href="hospitals.php"    class="<?= $current === 'hospitals.php'    ? 'active' : '' ?>">Hospitals</a>
+    <a href="schedules.php"    class="<?= $current === 'schedules.php'    ? 'active' : '' ?>">Schedules</a>
 
-        <a href="appointments.php">
-            Appointments
-        </a>
-
-        <a href="messages.php">
-            Messages
-        </a>
-
-        <a href="doctors.php">
-            Doctors
-        </a>
-
-        <a href="hospitals.php">
-            Hospitals
-        </a>
-
-        <a href="schedules.php">
-            Schedules
-        </a>
-
-        <a
-            href="logout.php"
-            class="logout"
-        >
-            Logout
-        </a>
+    <a href="logout.php" class="logout">Logout</a>
 
     </aside>
 
