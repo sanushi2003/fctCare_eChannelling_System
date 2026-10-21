@@ -6,9 +6,11 @@ require_once "backend/config/session.php";
 $error = "";
 
 
-/*REDIRECT IF ALREADY LOGGED IN*/
-
-
+/*
+|--------------------------------------------------------------------------
+| REDIRECT IF ALREADY LOGGED IN
+|--------------------------------------------------------------------------
+*/
 
 if (isset($_SESSION["user_type"])) {
 
@@ -38,9 +40,11 @@ if (isset($_SESSION["user_type"])) {
     }
 }
 
-/* LOGIN*/
-
-
+/*
+|--------------------------------------------------------------------------
+| LOGIN
+|--------------------------------------------------------------------------
+*/
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -66,9 +70,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
 
 
-
-    //PATIENT LOGIN
-        
+        /*
+        |--------------------------------------------------------------------------
+        | PATIENT LOGIN
+        |--------------------------------------------------------------------------
+        */
 
         if ($role === "patient") {
 
@@ -159,8 +165,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
 
-        //DOCTOR LOGIN
-    
+        /*
+        |--------------------------------------------------------------------------
+        | DOCTOR LOGIN
+        |--------------------------------------------------------------------------
+        */
 
         elseif ($role === "doctor") {
 
@@ -254,9 +263,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         /*
-        --------------------
-        ADMIN LOGIN
-        ---------------
+        |--------------------------------------------------------------------------
+        | ADMIN LOGIN
+        |--------------------------------------------------------------------------
         */
 
         elseif ($role === "admin") {
@@ -333,14 +342,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-        $selectedRole = $_POST["role"] ?? "patient";
-            if (!in_array($selectedRole, ["patient", "doctor", "admin"], true)) {
-                $selectedRole = "patient";
-            }
+$selectedRole = $_POST["role"] ?? "patient";
+if (!in_array($selectedRole, ["patient", "doctor", "admin"], true)) {
+    $selectedRole = "patient";
+}
 
 ?>
-
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -352,7 +359,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <title>fctCare - Login</title>
 <link rel="icon" type="image/jpeg" href="logo.jpeg">
-
 
 <style>
 
@@ -372,19 +378,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 body {
     margin: 0;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     font-family: "Segoe UI", Tahoma, Arial, sans-serif;
     color: var(--text);
     background: #eef7f9;
 }
 
 
-/* ------------------------------------
+/* =====================================================
    PAGE + BACKGROUND DECORATION
- */-----------------------------
+===================================================== */
 
 .page {
     position: relative;
-    min-height: 100vh;
+    flex: 1 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -394,9 +402,6 @@ body {
 }
 
 /* soft dotted pattern that fades out toward the edges */
-
-
-
 .page::before {
     content: "";
     position: absolute;
@@ -409,10 +414,6 @@ body {
 }
 
 /* floating colour orbs */
-
-
-
-
 .orb {
     position: absolute;
     border-radius: 50%;
@@ -455,9 +456,9 @@ body {
 }
 
 
-/* ========================
+/* =====================================================
    RIGHT : BRAND PANEL
-======================= */
+===================================================== */
 
 .visual {
     position: relative;
@@ -472,8 +473,6 @@ body {
 }
 
 /* tilted glass sheet behind the panel */
-
-
 .visual::before {
     content: "";
     position: absolute;
@@ -486,9 +485,6 @@ body {
 }
 
 /* plus badge with pulse ring */
-
-
-
 .visual::after {
     content: "✚";
     position: absolute;
@@ -603,8 +599,6 @@ body {
 }
 
 /* animated heartbeat line */
-
-
 .ecg {
     display: block;
     width: 100%;
@@ -685,9 +679,9 @@ body {
 }
 
 
-/* ======================
+/* =====================================================
    LEFT : LOGIN CARD
-=========================== */
+===================================================== */
 
 .form-side {
     position: relative;
@@ -710,13 +704,7 @@ body {
     animation: cardAppear 0.65s ease both;
 }
 
-
-
 /* colour strip along the top of the card */
-
-
-
-
 .form-side::before {
     content: "";
     position: absolute;
@@ -733,13 +721,7 @@ body {
     margin: 0 auto;
 }
 
-
-
-
-
-
 /* staggered entrance */
-
 .login-box > * {
     animation: fadeUp .6s ease both;
 }
@@ -761,13 +743,7 @@ body {
     to   { opacity: 1; transform: translateY(0); }
 }
 
-
-
-
-
-
 /* brand shown inside the card on phones only */
-
 .mobile-brand {
     display: none;
     align-items: center;
@@ -812,9 +788,6 @@ body {
     margin: 0 0 26px;
     color: rgba(5, 5, 5, 0.56);
 }
-
-
-
 
 
 /* ---------- ROLE SWITCH (sliding pill) ---------- */
@@ -865,14 +838,7 @@ body {
     background: var(--primary-dark);
 }
 
-
-
-
-
-
 /* modern browsers: one pill slides between the three options */
-
-
 @supports selector(:has(*)) {
 
     .roles::before {
@@ -903,10 +869,6 @@ body {
         color: #ffffff;
     }
 }
-
-
-
-
 
 
 /* ---------- INPUTS ---------- */
@@ -981,13 +943,6 @@ body {
 }
 
 
-
-
-
-
-
-
-
 /* ---------- BUTTON ---------- */
 
 .submit {
@@ -1011,14 +966,7 @@ body {
     transition: .2s;
 }
 
-
-
-
-
-
 /* light sweep on hover */
-
-
 .submit::after {
     content: "";
     position: absolute;
@@ -1051,15 +999,6 @@ body {
 .submit:hover .arrow {
     transform: translateX(5px);
 }
-
-
-
-
-
-
-
-
-
 
 
 /* ---------- MESSAGES + LINKS ---------- */
@@ -1101,23 +1040,11 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
-
-
 /* =====================================================
    RESPONSIVE
 ===================================================== */
 
-
 /* tablets / small laptops: hide the brand panel, centre the card */
-
 @media (max-width: 1000px) {
 
     .visual {
@@ -1135,8 +1062,6 @@ body {
 
     .page {
         width: 100%;
-        min-height: 100vh;
-        min-height: 100svh;
         padding: 25px 18px;
         display: flex;
         align-items: center;
@@ -1155,12 +1080,7 @@ body {
         display: flex;
     }
 
-
-
-
-
     /* Login card */
-
     .form-side {
         position: relative;
         width: 100%;
@@ -1261,12 +1181,7 @@ body {
 }
 
 
-
-
-
-
 /* small phones */
-
 @media (max-width: 380px) {
 
     .page {
@@ -1311,12 +1226,7 @@ body {
 }
 
 
-
-
-
-
 /* landscape phones */
-
 @media (max-width: 768px) and (max-height: 500px) {
 
     .page {
@@ -1332,21 +1242,10 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
 /* =====================================================
    FOOTER
 ===================================================== */
- 
+
 .footer {
     position: relative;
     z-index: 2;
@@ -1354,23 +1253,18 @@ body {
     color: #ffffff;
     text-align: center;
     padding: 32px;
-    margin-top: auto;
+    margin-top: 0;
     border-top: 4px solid #00a896;
 }
- 
+
 .footer_text {
     font-style: italic;
     opacity: 0.8;
     margin-top: 24px;
     font-size: 14px;
 }
- 
-
-
-
 
 /* Footer contact details */
-
 .footer-contact {
     display: flex;
     flex-wrap: wrap;
@@ -1379,7 +1273,7 @@ body {
     margin-bottom: 20px;
     text-align: left;
 }
- 
+
 .footer-contact .contact-item h4 {
     margin: 0 0 6px 0;
     font-size: 14px;
@@ -1387,29 +1281,29 @@ body {
     letter-spacing: 0.5px;
     opacity: 0.8;
 }
- 
+
 .footer-contact .contact-item span,
 .footer-contact .contact-item address {
     font-weight: 600;
     font-style: normal;
 }
- 
+
 .footer-contact .contact-item a {
     color: inherit;
     text-decoration: none;
     font-weight: 600;
 }
- 
+
 .footer-contact .contact-item a:hover {
     text-decoration: underline;
 }
- 
+
 @media (max-width: 768px) {
- 
+
     .footer {
         padding: 26px 18px;
     }
- 
+
     .footer-contact {
         gap: 22px;
         text-align: center;
@@ -1417,29 +1311,9 @@ body {
         align-items: center;
     }
 }
- 
- 
-
 
 
 /* respect "reduce motion" */
-
-@media (prefers-reduced-motion: reduce) {
- 
-    *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
-    }
-}
-
-
-
-
-
-
-
-/* respect "reduce motion" */
-
 @media (prefers-reduced-motion: reduce) {
 
     *, *::before, *::after {
@@ -1449,15 +1323,7 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
-/* ===== Advanced footer layout (layout only - colors come from style.css) ===== */
+ /* ===== Advanced footer layout (layout only - colors come from style.css) ===== */
                 
 
         .footer-top {
@@ -1561,6 +1427,7 @@ body {
             .footer-top { grid-template-columns: 1fr; gap: 24px; }
             .footer-bottom { justify-content: center; text-align: center; }
         }
+
 </style>
 
 </head>
@@ -1575,13 +1442,11 @@ body {
 <div class="page">
 
     <!-- background decoration -->
-
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
 
     <!-- RIGHT : BRAND PANEL -->
-
     <div class="visual">
         <div class="visual-content">
 
@@ -1617,7 +1482,6 @@ body {
 
 
     <!-- LEFT : LOGIN -->
-     
     <div class="form-side">
 
         <div class="login-box">
@@ -1758,6 +1622,8 @@ body {
             <a href="#" class="back-to-top" aria-label="Back to top">↑ Back to top</a>
         </div>
     </footer>
+
+
 
 <script>
 
